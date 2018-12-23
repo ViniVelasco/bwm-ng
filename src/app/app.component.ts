@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   componentTitle = 'I am app component from component.ts';
-
+  heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
   clickHandler() {
     alert("I AM CLICKED")
   }

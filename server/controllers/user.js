@@ -62,7 +62,7 @@ exports.register = function(req, res) {
         return res.status(422).send({errors: normalizeErrors(err.errors)})
       }
 
-      return res.json({'resgitered': true});
+      return res.json({'registered': true});
     });
   });
 }

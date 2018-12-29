@@ -10,11 +10,12 @@ import { Rental } from '../shared/rental.model';
 export class RentalListComponent implements OnInit {
   rentals: Rental[] = []
 
-  constructor(private rentalService: RentalService) { }
+  constructor(
+    private rentalService: RentalService
+    ) { }
 
   ngOnInit() {
     const rentalObservable = this.rentalService.getRentals();
-
     rentalObservable.subscribe(
       (rentals: Rental[]) => {
         this.rentals = rentals;

@@ -3,7 +3,7 @@ import { Booking } from 'src/app/booking/shared/booking.model';
 import { HelperService } from 'src/app/common/service/helper.service';
 import * as moment from 'moment';
 import { Rental } from '../../shared/rental.model';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BookingService } from 'src/app/booking/shared/booking.service';
 import { ToastrService } from 'ngx-toastr';
 import { DaterangePickerComponent} from 'ng2-daterangepicker';

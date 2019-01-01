@@ -49,8 +49,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.loginForm);
-
     this.auth.login(this.loginForm.value).subscribe(
        (token) => {
         this.router.navigate(['/rentals', {registered: 'success'}])

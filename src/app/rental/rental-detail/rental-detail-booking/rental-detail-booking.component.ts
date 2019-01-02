@@ -40,7 +40,7 @@ export class RentalDetailBookingComponent implements OnInit {
               private modalService: NgbModal,
               private bookingService: BookingService,
               private toastr: ToastrService,
-              private auth: AuthService) { }
+              public auth: AuthService) { }
 
   ngOnInit() {
     this.newBooking = new Booking();

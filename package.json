@@ -1,10 +1,16 @@
 {
   "name": "bwm-cli",
   "version": "0.0.0",
+  "engines": {
+    "node": "10.14.1",
+    "npm": "6.4.1"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run start --prefix server",
+    "start-dev": "ng serve",
     "build": "ng build",
+    "herouku-postbuild": "npm run build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

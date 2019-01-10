@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
-import { NgPipesModule } from 'ngx-pipes';
+import { NgPipesModule, UcWordsPipe } from 'ngx-pipes';
 import { MapModule } from '../common/map/map.module';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { UppercasePipe } from '../common/pipes/uppercase.pipe';
@@ -20,6 +20,9 @@ import { RentalService } from './shared/rental.service';
 import { BookingService } from '../booking/shared/booking.service';
 import { RentalSearchComponent } from './rental-search/rental-search.component';
 import { RentalCreateComponent } from './rental-create/rental-create.component';
+import { RentalUpdateComponent } from './rental-update/rental-update.component';
+import { EditableModule } from '../common/components/editable/editable.module';
+import { RentalGuard } from './shared/rental.guard';
 
 const routes: Routes = [
   { path: 'rentals', 
@@ -27,6 +30,7 @@ const routes: Routes = [
    children: [
     { path: '', component: RentalListComponent },
     { path: 'new', component: RentalCreateComponent, canActivate: [AuthGuard] },
+    { path: ':rentalId/edit', component: RentalUpdateComponent, canActivate: [AuthGuard, RentalGuard] },
     { path: ':rentalId', component: RentalDetailComponent},
     { path: ':city/homes', component: RentalSearchComponent }
   ]
@@ -42,7 +46,8 @@ const routes: Routes = [
     UppercasePipe,
     RentalDetailBookingComponent,
     RentalSearchComponent,
-    RentalCreateComponent
+    RentalCreateComponent,
+    RentalUpdateComponent
   ],
   imports: [
     CommonModule,
@@ -51,12 +56,15 @@ const routes: Routes = [
     NgPipesModule,
     MapModule,
     Daterangepicker,
-    FormsModule
+    FormsModule,
+    EditableModule
   ],
   providers: [
     RentalService, 
     HelperService,
-    BookingService
+    BookingService,
+    UcWordsPipe,
+    RentalGuard
   ]
 })
 export class RentalModule {}

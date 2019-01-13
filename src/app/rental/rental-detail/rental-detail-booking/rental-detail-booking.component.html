@@ -46,6 +46,8 @@
     <p>Guests: <em>{{newBooking.guests}}</em></p>
     <p>Price: <em>{{newBooking.totalPrice}}$</em></p>
 
+    <bwm-payment (paymentConfirmed)="onPaymentConfirmed($event)"></bwm-payment>
+
     <p>Do you confirm booking for selected days?</p>
   </div>
   <div *ngIf="errors.length > 0" class="alert alert-danger modal-error">
@@ -54,7 +56,7 @@
     </p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-bwm" (click)="createBooking()">Confirmed</button>
+    <button [disabled]="!newBooking.paymentToken" type="button" class="btn btn-bwm" (click)="createBooking()">Confirmed</button>
     <button type="button" class="btn btn-bwm" (click)="modal.close('Save click')">Close</button>
   </div>
 </ng-template>

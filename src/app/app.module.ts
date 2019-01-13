@@ -11,6 +11,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { RentalModule } from './rental/rental.module';
 import { AuthModule } from './auth/auth.module';
 import { ManageModule } from './manage/manage.module';
+import { UserModule } from './user/user.module';
+
 const routes: Routes = [
   { path: '', redirectTo: '/rentals', pathMatch: 'full'}
 ]
@@ -27,6 +29,7 @@ const routes: Routes = [
     RouterModule,
     RentalModule,
     ManageModule,
+    UserModule,
     AuthModule,
     NgbModule.forRoot(),
     ToastrModule.forRoot()

@@ -85,14 +85,16 @@ export class RentalDetailBookingComponent implements OnInit {
         this.newBooking = new Booking();
         this.modalRef.close();   
         this.resetDatePicker(); 
-        this.toastr.success('Booking has been succesfuly created, check your booking detail in manage section', 'Success!', {
-          onActivateTick: true
-        });
+        this.toastr.success('Booking has been succesfuly created, check your booking detail in manage section', 'Success!');
       }, 
       (errorResponse: any) => {
         this.errors = errorResponse.error.errors;
       }
     )
+  }
+
+  onPaymentConfirmed(paymentToken: any) {
+    this.newBooking.paymentToken = paymentToken;
   }
 
   public selectedDate(value: any, datepicker?: any) {

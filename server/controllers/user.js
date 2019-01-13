@@ -3,6 +3,34 @@ const { normalizeErrors } = require('../helpers/mongoose');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
+exports.getUser = function(req,res) {
+
+  const requestUserId = req.params.id;
+  const user = res.locals.user;
+
+  if(user.id === requestUserId) {
+
+    User.findById(requestUserId, function(err, foundUser){
+      if(err) {
+        return res.status(422).send({errors: normalizeErrors(err.errors)})
+      }
+
+      return res.json(foundUser);
+    });
+
+  } else {
+    User.findById(requestUserId)
+      .select('-revenue -stripeCustomerId -password')
+      .exec(function(err, foundUser) {
+        if(err) {
+          return res.status(422).send({errors: normalizeErrors(err.errors)})
+        }
+  
+        return res.json(foundUser);
+      });
+  }
+}
+
 exports.auth = function(req, res) {
   const {email, password} = req.body; //destructuring
   if(!password || !email){
